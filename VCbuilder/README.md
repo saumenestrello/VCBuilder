@@ -1,2 +1,2 @@
-# VCCreator
+# VCBuilder
 Verifiable Credential generator
