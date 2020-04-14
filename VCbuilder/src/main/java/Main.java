@@ -10,7 +10,7 @@ public class Main {
 		String cf = "BLRVQM40H43L753F";
 		JSONObject config = FileHandler.getConfig();
 		
-		String VC = builder.createVC(config,sub,cf);
+		JSONObject VC = builder.createVC(config,sub,cf);
 		
 		FileHandler.writeJWSToFile(VC);
 		

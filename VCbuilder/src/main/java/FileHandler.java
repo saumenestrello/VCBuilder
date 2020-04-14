@@ -38,11 +38,10 @@ public class FileHandler {
 
 	} 
 	
-	public static void writeJWSToFile(String fileString){
-		fileString.replaceAll("\\s+", "");
+	public static void writeJWSToFile(JSONObject fileString){
 	    try {
-	    	FileWriter writer = new FileWriter("jws.txt");
-			writer.write(fileString.toCharArray());
+	    	FileWriter writer = new FileWriter("jws.json");
+			writer.write(fileString.toString().toCharArray());
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();

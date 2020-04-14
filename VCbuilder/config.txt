@@ -1,4 +1,3 @@
 {
-	"privateKey" : "0x7feed7d6a6239c3d3f698034fab88828bdfc07e3e1bde5516b2e583abfe5cc43",
-	"iss": "0x00222ead2d0f83a71f645d3d9634599ec8222830"
+	"privateKey" : "0x7feed7d6a6239c3d3f698034fab88828bdfc07e3e1bde5516b2e583abfe5cc43"
 }
