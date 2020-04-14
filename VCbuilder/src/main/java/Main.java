@@ -6,12 +6,11 @@ public class Main {
 		
 		Builder builder = new Builder();
 		
-		String sub = "did:eth:0xcf87ce923fe20968F491556Df7833C948400d68a";
+		String sub = "0xcf87ce923fe20968F491556Df7833C948400d68a";
+		String cf = "BLRVQM40H43L753F";
 		JSONObject config = FileHandler.getConfig();
 		
-		String VC = builder.createVC(config, sub);
-		
-		System.out.println(VC);
+		String VC = builder.createVC(config,sub,cf);
 		
 		FileHandler.writeJWSToFile(VC);
 		
