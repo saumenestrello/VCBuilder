@@ -8,6 +8,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 public class FileHandler {
 
 	public static JSONObject getConfig(){
@@ -40,9 +43,9 @@ public class FileHandler {
 	
 	public static void writeJWSToFile(JSONObject fileString){
 	    try {
-	    	FileWriter writer = new FileWriter("jws.json");
-			writer.write(fileString.toString().toCharArray());
-			writer.close();
+			ObjectMapper myObjectMapper = new ObjectMapper();
+			myObjectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+			myObjectMapper.writeValue(new File("jwt.json"), fileString);			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
