@@ -21,7 +21,7 @@ public class Builder {
 		keyString = keyString.replaceAll("\\s+", "");
 		Credentials credentials = Credentials.create(keyString);
 		ECKeyPair keyPair = credentials.getEcKeyPair();
-		//String iss = keyPair.getPublicKey().toString(16);
+
 		String iss = credentials.getAddress();
 		String issPublicKey = keyPair.getPublicKey().toString(16);
 		
@@ -34,9 +34,6 @@ public class Builder {
 		JWT.put("header", header);
 		JWT.put("payload", payload);
 		
-		/*String encodedHeader = Base64.getUrlEncoder().encodeToString(header.getBytes());
-		String encodedPayload = Base64.getUrlEncoder().encodeToString(payload.getBytes());*/
-		
 		String message = header.toString() + "." + payload.toString();
 		byte[] hashedMsg = Hash.sha3(message.getBytes(StandardCharsets.UTF_8));
 		
@@ -46,8 +43,6 @@ public class Builder {
 		
 		String signature = this.getSignature(sign);	
 		JWT.put("signature", signature);
-		
-		//String JWT = encodedHeader + "." + encodedPayload + "." + encodedSignature;
 		
 		System.out.println("JWT: " + JWT);
 		
@@ -82,12 +77,6 @@ public class Builder {
 	public String getSignature(SignatureData sign){
 		
 		System.out.println("> generating signature...");
-		
-		/*JSONObject signature = new JSONObject();
-		
-		signature.put("r", Numeric.toHexString(sign.getR()));
-		signature.put("s", Numeric.toHexString(sign.getS()));
-		signature.put("v", new BigInteger(sign.getV()).intValue());*/
 		
 		System.out.println("r: " + Numeric.toHexString(sign.getR()));
 		System.out.println("s: " + Numeric.toHexString(sign.getS()));
