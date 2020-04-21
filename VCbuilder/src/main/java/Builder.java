@@ -42,7 +42,7 @@ public class Builder {
 		
 		System.out.println("hash: " + Numeric.toHexString(hashedMsg));
 		
-		Sign.SignatureData sign = Sign.signMessage(hashedMsg, keyPair);
+		Sign.SignatureData sign = Sign.signMessage(hashedMsg, keyPair, false);
 		
 		String signature = this.getSignature(sign);	
 		JWT.put("signature", signature);
@@ -93,7 +93,11 @@ public class Builder {
 		System.out.println("s: " + Numeric.toHexString(sign.getS()));
 		System.out.println("v: " + new BigInteger(sign.getV()).intValue());
 		
-		String signature = Numeric.toHexString(sign.getR()) + Numeric.toHexString(sign.getS());
+		String r = Numeric.toHexString(sign.getR()); 
+		String s = Numeric.toHexString(sign.getS()); 
+		String v = Integer.toHexString(new BigInteger(sign.getV()).intValue()); 
+		
+		String signature = r + s.replaceFirst("0x","") + v;
 		
 		return signature;
 	}
